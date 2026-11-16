@@ -24,6 +24,8 @@ public class Login extends javax.swing.JFrame {
      Connection conexao = null;
     PreparedStatement pst = null;
     ResultSet rs = null;
+    
+    
     /**
      * Creates new form Login
      */
@@ -33,14 +35,18 @@ public class Login extends javax.swing.JFrame {
         
     }
     
-        public void LoginUsuario(){
+        public String LoginUsuario(){
+            
+            Boolean resultado = null;
          
             
-         String sql = "select * from usuario where username = ? and senha = ?";
+         String sql = "select estado, username, senha from usuario where username = ? and senha = ?";
          
            try {
          
           pst=conexao.prepareStatement(sql);
+          
+          
           
       String  senha =  new String(Senha.getPassword());
           
@@ -49,25 +55,52 @@ public class Login extends javax.swing.JFrame {
             
              
             rs= pst.executeQuery();
-           
-               if (rs.next()) {
-            JOptionPane.showMessageDialog(null, "Login realizado com sucesso!");
             
-              TelaPrincipal principal = new  TelaPrincipal();
-                principal.setVisible(true);
+            
+            
             
            
-        } else {
-            JOptionPane.showMessageDialog(null, "Usuário ou senha inválidos!");
+              if (rs.next()) { // Move o cursor para o primeiro registro
+            resultado = rs.getBoolean("estado"); 
+            
+            System.out.println(resultado);
+// ou getInt(), getDouble(), etc., dependendo do tipo do campo
         }
+              
+              if(resultado == true){
+                   JOptionPane.showMessageDialog(null, "Usuário ativo!");
+                   
+                    TelaPrincipal principal = new TelaPrincipal();
+                principal.setVisible(true);
+                  
+              }else{
+                                     JOptionPane.showMessageDialog(null, "Usuário sem permissão!");
+
+                  
+              }
         
+        rs.close();
+        
+        
+      
+    
+
+                
+               
+//        Dados.setText(resultado);
              
         }catch (Exception e){
             JOptionPane.showMessageDialog(null, e);
         }
-          
+                     return null;
+
            
-      }
+        }
+          
+            
+ 
+        
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -96,6 +129,7 @@ public class Login extends javax.swing.JFrame {
 
         Senha.setToolTipText("Senha");
 
+        Usuario.setText("gusta");
         Usuario.setToolTipText("Nome de Usuário");
 
         BotaoCancelar.setText("Cancelar");
@@ -121,7 +155,7 @@ public class Login extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(134, Short.MAX_VALUE)
+                .addContainerGap(120, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(ButtonLogar1, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)

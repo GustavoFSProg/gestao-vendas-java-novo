@@ -5,10 +5,13 @@
         <group>
             <file>file:/home/oem/NetBeansProjects/gestao-de-vendas/src/gestaoVendas/Usuarios.java</file>
             <file>file:/home/oem/NetBeansProjects/gestao-de-vendas/src/Modelos/Usuarios.java</file>
+            <file>file:/home/oem/NetBeansProjects/gestao-de-vendas/src/Imagens/2013070906515354_easyicon_net_32.png</file>
             <file>file:/home/oem/NetBeansProjects/gestao-de-vendas/src/gestaoVendas/TelaPrincipal.java</file>
             <file>file:/home/oem/NetBeansProjects/gestao-de-vendas/src/gestaoVendas/TelaClientes.java</file>
             <file>file:/home/oem/NetBeansProjects/gestao-de-vendas/src/gestaoVendas/Login.java</file>
+            <file>file:/home/oem/NetBeansProjects/gestao-de-vendas/src/exception/NegocioException.java</file>
             <file>file:/home/oem/NetBeansProjects/gestao-de-vendas/src/gestaoVendas/Conexao.java</file>
+            <file>file:/home/oem/NetBeansProjects/gestao-de-vendas/src/Imagens/20130709071127978_easyicon_net_32.png</file>
         </group>
     </open-files>
 </project-private>
