@@ -35,19 +35,21 @@ public class CadastroUsuarios extends javax.swing.JFrame {
 
     }
     
+    
+    
        private void adicionar(){
         String sql = "insert into usuario(nome, username,senha,perfil) values( ?, ?, ? , ?)";
         
         
     
-             String senhaOriginal = Senha.getText();
+           String   senhaOriginal = String.valueOf( Senha.getPassword());
 
         // 1. GERAR O HASH (Para salvar no banco de dados)
         // O gensalt() gera um "sal" aleatório para aumentar a segurança
-        String hashSenha = BCrypt.hashpw(senhaOriginal, BCrypt.gensalt());
-        
-        System.out.println("Senha original: " + senhaOriginal);
-        System.out.println("Hash gerado: " + hashSenha);
+//        String hashSenha = BCrypt.hashpw(senhaOriginal, BCrypt.gensalt(12));
+//        
+//        System.out.println("Senha original: " + senhaOriginal);
+//        System.out.println("Hash gerado: " + hashSenha);
          
           
            
@@ -56,7 +58,7 @@ public class CadastroUsuarios extends javax.swing.JFrame {
 //            pst.setString(1,  IdField.getText());            
             pst.setString(1, Nome.getText()); 
             pst.setString(2, UserName.getText());   
-            pst.setString(3, hashSenha);       
+            pst.setString(3, senhaOriginal);       
             pst.setString(4, Perfil.getText());  
        
          

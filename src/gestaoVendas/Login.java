@@ -13,6 +13,7 @@ import net.proteanit.sql.DbUtils;
 //import javax.swing.JOptionPane;
 
 import javax.swing.JOptionPane;
+import org.mindrot.jbcrypt.BCrypt;
 
 /**
  *
@@ -41,32 +42,112 @@ public class Login extends javax.swing.JFrame {
          
             
          String sql = "select estado, username, senha from usuario where username = ? and senha = ?";
+//                  String sql = "select estado, username, senha from usuario where username = ? ";
+
          
            try {
          
           pst=conexao.prepareStatement(sql);
           
           
-          
-      String  senha =  new String(Senha.getPassword());
+                        String  SenhaCampo =     String.valueOf(Senha.getPassword());
+                        
+                     
+                        
+
+
           
             pst.setString(1, Usuario.getText()); 
-            pst.setString(2, senha); 
+            pst.setString(2, SenhaCampo);
             
              
             rs= pst.executeQuery();
             
-            
-            
-            
            
-              if (rs.next()) { // Move o cursor para o primeiro registro
+            
+//                          
+//                  
+//    public boolean verifyHash(String SenhaVar, String SenhaBanco) {
+//        return BCrypt.checkpw(password, hash);
+//    }
+             // Move o cursor para o primeiro registro
+           
+//             while (rs.next()) {
+//                String SenhaBanco = rs.getString("senha");
+//                  
+////          Boolean Pass =   BCrypt.checkpw(SenhaVar, SenhaBanco);
+//                  
+//                  
+//boolean authenticated = BCrypt.checkpw("cacete", SenhaBanco);
+//
+//System.out.println(authenticated);}
+//                              String SenhaBanco =    rs.getString("senha");
+
+             
+           
+              while (rs.next()) { // Move o cursor para o primeiro registro
+                  
+//                  String.valueOf( Senha.getPassword());
+                  
+//                  String.valueOf( Senha.getPassword());
+//                  
+//                  String SenhaBanco =  rs.getText("senha");
+                  
+//                               System.out.println(SenhaBanco);
+
+//                  
+//                  
+//                  boolean authenticated = BCrypt.checkpw(SenhaCampo, SenhaBanco);
+////               
+////           boolean authenticated = BCrypt.checkpw(SenhaCampo, SenhaBanco);
+////
+//          if (authenticated) {
+//             System.out.println(authenticated);
+//               JOptionPane.showMessageDialog(null, "Login aprovado!");
+//          }
+//               
+//
+//    } else {
+//    // Invalid credentials
+//                System.out.println("Senha incorreta.");
+//
+////}                  System.out.println(SenhaBanco);
+//
+//           }
+        
+    
+//                  
+//                    String senhaTentativaLogin = "minhaSenhaSuperSecreta123";
+//        String senhaErrada = "senha123";
+//        
+//                  String submittedPassword = request.getParameter(SenhaVar);
+//String storedHash = SenhaBanco.getPasswordHash(SenhaBAnco); // Retrieved from your database
+
+
+
+//
+//  
+
+
+        // Compara a senha em texto puro com o hash guardado no banco
+//        if (BCrypt.checkpw(SenhaVar,SenhaBanco)) {
+//            System.out.println("Login aprovado! A senha confere.");
+//        } else {
+//            System.out.println("Senha incorreta.");
+//        }
+
+//        // Testando com a senha errada
+//        if (BCrypt.checkpw(senhaErrada, rs.getString("senha"))) {
+//            System.out.println("Login aprovado!");
+//        } else {
+//            System.out.println("Login negado! A senha não confere.");
+//        }
             resultado = rs.getBoolean("estado"); 
             
             System.out.println(resultado);
 // ou getInt(), getDouble(), etc., dependendo do tipo do campo
-        }
-              
+//        
+//              
               if(resultado == true){
                    JOptionPane.showMessageDialog(null, "Usuário ativo!");
                    
@@ -78,8 +159,11 @@ public class Login extends javax.swing.JFrame {
 
                   
               }
+//              return  SenhaBanco;
+              }
         
         rs.close();
+              
         
         
       

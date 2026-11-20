@@ -43,6 +43,46 @@ public class Bcrypt extends javax.swing.JFrame {
             System.out.println("Login negado! A senha não confere.");
         }
     }
+    
+    
+    String submittedPassword = request.getParameter("password");
+String storedHash = user.getPasswordHash(); // Retrieved from your database
+
+boolean authenticated = BCrypt.checkpw(submittedPassword, storedHash);
+
+if (authenticated) {
+    // User is valid, proceed with login
+} else {
+    // Invalid credentials
+}
+
+
+
+public class JBcryptDemo {
+    public static void main(String[] args) {
+        String password = "correct horse battery staple";
+
+        // gensalt(12) = cost factor 12 (2^12 key-expansion rounds)
+        String hash = BCrypt.hashpw(password, BCrypt.gensalt(12));
+        System.out.println(hash);
+        System.out.println(hash.length());
+
+        // checkpw re-hashes with the salt and cost stored in the hash
+        System.out.println(BCrypt.checkpw(password, hash));
+        System.out.println(BCrypt.checkpw("wrong password", hash));
+    }
+}
+
+
+
+
+ public String hash(String password) {
+        return BCrypt.hashpw(password, BCrypt.gensalt(logRounds));
+    }
+
+    public boolean verifyHash(String password, String hash) {
+        return BCrypt.checkpw(password, hash);
+    }
 }
 
 
