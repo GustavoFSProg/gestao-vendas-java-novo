@@ -17,6 +17,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import javax.swing.Timer;
+import org.mindrot.jbcrypt.BCrypt;
 
 /**
  *
@@ -30,7 +31,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
     Connection conexao = null;
     /**  
      * Creates new form TelaPrincipal
+     * 
+     * 
      */
+    
     public TelaPrincipal() {
         initComponents();
         

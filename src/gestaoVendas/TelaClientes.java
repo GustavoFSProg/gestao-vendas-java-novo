@@ -14,6 +14,7 @@ import net.proteanit.sql.DbUtils;
 
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import org.mindrot.jbcrypt.BCrypt;
 
 /**
  *
@@ -86,6 +87,12 @@ public class TelaClientes extends javax.swing.JInternalFrame {
           
            
       }
+      
+     
+      
+      
+      
+      
       
         public void setar_campos(){
             int setar = TabelaClientes.getSelectedRow();
